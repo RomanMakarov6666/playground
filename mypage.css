@@ -35,6 +35,14 @@ body{
     background: #333;
     border-radius: 5px;
   }
+
+  @media only screen and (max-width:768px){
+    .navbar a, button {
+      font-size: xx-small;
+      font-weight: bolder;
+    }
+  }
+  
   button{
     background-color: orangered;
     float: left;
@@ -55,14 +63,28 @@ body{
 
 div{
     font-size: x-large;
+    height: 50%;
+    
 }
+
 .image-wrapper {
     
     position: relative;
     width: 45%;
     height: 50%;
   }
-  
+  @media only screen and (max-width: 768px){
+  div{
+      font-size: smaller;
+      height: 35%;
+
+      .image-wrapper {
+    
+        position: relative;
+        width: 45%;
+        height: 35%;
+      }
+  }}
   .image-wrapper img {
     position: absolute;
     max-width: 100%;
@@ -75,7 +97,7 @@ div{
   .image-wrapper img.second {
     opacity: 0;
     
-
+    
   }
   .image-wrapper img.ver {
     
@@ -105,7 +127,7 @@ div{
   .image-wrapper:hover img.first {
     opacity: 0.5;
   }
-  
+ 
   .page {
     position: absolute;
   
@@ -138,7 +160,50 @@ div{
     transition: right 0.5s ease-in-out;
     opacity: 0.7;
     font-size: large;
-}
+
+
+
+
+
+
+
+} @media only screen and (max-width: 768px){
+    .image-wrapper {
+    
+      position: relative;
+      width: 45%;
+      height: 50%;
+    }
+    
+    .image-wrapper img {
+      position: absolute;
+      max-width: 100%;
+      width: auto/9;
+      height: auto;
+      transition: opacity 0.5s ease-in-out;
+      border-radius: 5px;
+    }
+    .contact-container {
+      position: fixed;
+       /* Hidden below screen */
+      right: -600px;
+      bottom: 0;
+      width: 250px;
+      height: 300PX;
+      background: rgb(92, 43, 43);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      transition: right 0.5s ease-in-out;
+      opacity: 0.7;
+      font-size: small;
+    
+    
+    
+    
+    
+      
+    }}
 .contact-container.show {
     right: 20px; /* Moves into view */
 }
@@ -164,3 +229,13 @@ div{
   color: white; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
+.chatgpt{
+  margin-left: 80%;
+   font-size: large;
+}
+@media only screen and (max-width:768px){
+  .chatgpt{
+    margin-left: 40%;
+     font-size: small;
+  }
+}
