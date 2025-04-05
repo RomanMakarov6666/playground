@@ -23,6 +23,7 @@
       object-fit: cover;
       z-index: -1;
     }
+    @media only screen and (min-width: 1200px){
     p{
         color: transparent;
         position:relative;
@@ -35,13 +36,53 @@
         -webkit-background-clip: text;
         background-image: url(F2iM2D3WQAAfhQs.jpg);
         background-size: contain;
+    }}
+
+    @media only screen and (max-width: 768px){
+        p{
+        color: transparent;
+        position:relative;
+        top: 10px;
+        margin-top: 10px;
+        font-size: 150px;
+        font-weight: 900;
+        font-family: 'Courier New', Courier, monospace;
+        background-clip: text;
+        -webkit-background-clip: text;
+        background-image: url(F2iM2D3WQAAfhQs.jpg);
+        background-size: contain;
+    }
     }
 </style>
 <body>
     <video autoplay muted loop id="bg-video">
-        <source src="Max Verstappen _ On My Own.mp4" type="video/mp4">
+        <source id="video-src"src="Max Verstappen _ On My Own.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
       </video>
-    <p>JUST FOR FUN</p>
+    <p>JUST <br>FOR <br>FUN</p>
+
+    <script>
+        function changeVideoSource() {
+            const videoElement = document.getElementById("bg-video");
+            const videoSrc = document.getElementById("video-src");
+            const screenWidth = window.innerWidth;
+
+            // Change video source based on screen width
+            if (screenWidth <= 768) {
+                // For mobile screens (<=768px)
+                videoSrc.src = "Download.mp4";  // Replace with your mobile version video
+            } else {
+                // For larger screens (>768px)
+                videoSrc.src = "Max Verstappen _ On My Own.mp4";  // Replace with your desktop version video
+            }
+
+            // Reload the video element to apply the new source
+            videoElement.load();
+        }
+
+        // Call the function initially and also on window resize
+        window.addEventListener('load', changeVideoSource);
+        window.addEventListener('resize', changeVideoSource);
+    </script>
 </body>
 </html>
