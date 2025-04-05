@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyPageForFun</title>
+    <link rel="stylesheet" href="mypage.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Ensure Chart.js is loaded here -->
+
+</head>
+<body id="body">
+    
+    <nav>
+        <ul class="navbar">
+          <li><a href="#">Home</a></li>
+          <li><a href="justforfun.html">About</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><button id="Contact" onclick="slidePage()">Contact</button></li>
+          <li><button id="change" onclick="togglePages()">Racing</button></li>
+          <li><button id="darklight" onclick="darkLight()">Light mode</button></li>
+
+        </ul>
+      </nav>
+
+
+
+<div id="page1" class="page">
+
+    <div class="image-wrapper" style="float: left;">
+      
+    <img class="first" src="redbull.jpg" alt="">
+    <img class="second ver" src="pngwing.com.png" alt=""></div>
+
+    <div style="float: right; width: 50%; height: 50%; position: relative;">
+        <h2>
+            About me
+        </h2>
+        <p>
+            Speed, precision, and competition – that's what drives me. Whether it's on the real track or in the virtual world, I push for the limit every time. I finished 4th place in the SWS season, and my journey in simracing is just as intense as real karting.
+        </p>
+    </div>
+
+    <div style="float: left; width: 50%;height: 50%;">
+        <h2>My Racing Journey</h2>
+        <ul>
+
+            <li>Competed in multiple karting events, securing a 4th place finish in the SWS season.</li>
+            <li>Passionate about motorsports and always looking for the next challenge.</li>
+            <li>Exploring different racing disciplines, from endurance to sprint formats.</li>
+
+
+        </ul>
+    </div>
+
+    <div class="image-wrapper" style="float: right;">
+      
+        <img class="first" src="f1.jpg" alt="">
+        <img class="second leclerc" src="leclerc.png" alt=""></div>
+
+        <div style="float: right; width: 50%; height: 50%; ">
+            <h2>My Racing Journey</h2>
+            <ul>
+    
+                <li>Competing in [iRacing / ACC / rFactor2 / etc.], always refining my racecraft.
+                </li><li>
+                Custom-built sim setup for maximum immersion and training.
+                </li><li>Analyzing telemetry, setups, and strategy to find every bit of pace.
+                </li>
+    
+    
+            </ul>
+        </div>
+    
+        <div class="image-wrapper" style="float: left;">
+          
+            <img class="first" src="M417598.jpg" alt="">
+            <img class="second lew" src="Lewis.png" alt=""></div>
+<span style="margin-left: 80%; font-size: large;"><span style="font-size: larger;font-weight: bolder;">©</span> text written by chatgpt</span>
+            
+    </div>
+    <div id="page2" class="page hidden inactive">
+        <h2>Current Bitcoin Price: <span style="color: gold;font-weight: bold;" id="btc-price">Loading...</span></h2>
+    
+    <h2 id="shadowtext" class="darkshadow">Price Chart</h2>
+    <canvas id="btc-chart"></canvas> <!-- Chart.js will render here -->
+
+        <h1 style="text-align:center;">Latest Crypto News</h1>
+    <div id="news">Loading crypto news...</div>
+    </div>
+
+    
+
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+    <div id="slidePage" class="contact-container">
+        <h2>Contact Me</h2>
+    I’d love to hear from you! Whether you have a question, feedback, or just want to say hello, feel free to reach out. <br><br>
+
+    📍 Address: 123 Main Street, City, Country <br>
+    📞 Phone: +123 456 7890 <br>
+    📧 Email: contact@website.com <br><br>
+
+    🕒 Business Hours: <br>
+    Monday - Friday: 9:00 AM - 6:00 PM <br>
+    Saturday - Sunday: Closed <br>
+     </div>
+       <script>
+
+
+        function darkLight(){
+            const button = document.getElementById("darklight");
+            const body = document.getElementById("body");
+            if(body.classList.contains("lightmode")){
+                body.classList.remove("lightmode");
+                document.getElementById("shadowtext").classList.add("darkshadow")
+                document.getElementById("shadowtext").classList.remove("lightshadow")
+
+                
+            }
+            else{
+                body.classList.add("lightmode")
+                document.getElementById("shadowtext").classList.add("lightshadow")
+                document.getElementById("shadowtext").classList.remove("darkshadow")
+
+            }
+
+        }
+
+
+///////////////////////////////////////////////////////////////////////////////
+async function fetchCryptoNews() {
+    const url = "https://min-api.cryptocompare.com/data/v2/news/?categories=Cryptocurrency";
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.Data.length > 0) {
+            displayNews(data.Data);
+        } else {
+            document.getElementById("news").innerHTML = "No crypto news available.";
+        }
+    } catch (error) {
+        console.error("Error fetching crypto news:", error);
+        document.getElementById("news").innerHTML = "Failed to load news.";
+    }
+}
+
+fetchCryptoNews();
+        function displayNews(articles) {
+            let newsContainer = document.getElementById("news");
+            newsContainer.innerHTML = "";
+
+            articles.slice(0, 5).forEach(article => { // Display only 5 articles
+                let newsItem = document.createElement("div");
+                newsItem.classList.add("article");
+
+                newsItem.innerHTML = `
+                    <h3>${article.title}</h3>
+                    <p>${article.description || "No description available."}</p>
+                    <a href="${article.url}" target="_blank">Read more</a>
+                `;
+
+                newsContainer.appendChild(newsItem);
+            });
+        }
+
+        fetchCryptoNews(); // Load crypto news when page loads
+
+
+///////////////////////////////////////////////////////////////////////////
+        function togglePages() {
+            const page1 = document.getElementById("page1");
+            const page2 = document.getElementById("page2");
+
+            if (page1.classList.contains("hidden")) {
+                // Page 1 is hidden, so fade in Page 1
+                page2.classList.add("hidden");
+                setTimeout(() => {
+                    page2.classList.add("inactive");
+                    page1.classList.remove("inactive");
+                    setTimeout(() => {
+                        page1.classList.remove("hidden");
+                        document.getElementById("change").innerText = "Trader";
+
+                    }, 50); // Short delay for smooth effect
+                }, 1000); // Matches transition duration
+            } else {
+                // Page 2 is hidden, so fade in Page 2
+                page1.classList.add("hidden");
+                setTimeout(() => {
+                    page1.classList.add("inactive");
+                    page2.classList.remove("inactive");
+                    setTimeout(() => {
+                        page2.classList.remove("hidden");
+                        document.getElementById("change").innerText = "Driver";
+                    }, 50);
+                }, 1000);
+            }
+        }
+
+
+        function slidePage(){
+            document.getElementById("slidePage").classList.toggle("show");
+            
+        }
+
+        
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let timeStamps = []; // To store the time
+        let prices = [];     // To store the prices
+        const maxDataPoints = 50; // Set the max data points to show (e.g., 50)
+
+        window.onload = function() {
+            let ctx = document.getElementById('btc-chart').getContext('2d');
+            let chart = new Chart(ctx, {
+                type: 'line', // Line chart
+                data: {
+                    labels: timeStamps, // X-axis: Time
+                    datasets: [{
+                        label: 'BTC Price (USD)',
+                        data: prices, // Y-axis: Prices
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    aspectRatio: 2,
+                    scales: {
+                        x: { 
+                            title: { display: true, text: 'Time' }
+                        },
+                        y: {
+                            title: { display: true, text: 'Price (USD)' }
+                        }
+                    }
+                }
+            });
+
+            function fetchBTCPrice() {
+                fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT")
+                    .then(response => response.json())
+                    .then(data => {
+                        let currentTime = new Date().toLocaleTimeString(); // Current time
+                        let price = parseFloat(data.price).toFixed(2);    // BTC price
+
+                        // Update the page with the latest price
+                        document.getElementById("btc-price").innerText = "$" + price;
+
+                        // Update the chart with new data
+                        if (timeStamps.length >= maxDataPoints) {
+                            timeStamps.shift(); // Remove the oldest time entry if over 50 entries
+                            prices.shift();     // Remove the oldest price entry if over 50 entries
+                        }
+
+                        timeStamps.push(currentTime);
+                        prices.push(price);
+
+                        chart.data.labels = timeStamps;
+                        chart.data.datasets[0].data = prices;
+                        chart.update(); // Re-render the chart
+                    })
+                    .catch(error => console.error("Error fetching BTC price:", error));
+            }
+
+            // Fetch data every 10 seconds
+            fetchBTCPrice(); // Initial call to fetch the first price
+            setInterval(fetchBTCPrice, 10000); // Fetch price every 10 seconds
+
+
+
+
+        }
+    
+    </script>
+</body>
+</html>
