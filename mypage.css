@@ -76,15 +76,15 @@ div{
   @media only screen and (max-width: 768px){
   div{
       font-size: smaller;
-      height: 35%;
+      height: 20%;
 
-      .image-wrapper {
+      
+  }.image-wrapper {
     
         position: relative;
         width: 45%;
-        height: 35%;
-      }
-  }}
+        height: 20%;
+      }}
   .image-wrapper img {
     position: absolute;
     max-width: 100%;
@@ -172,7 +172,7 @@ div{
     
       position: relative;
       width: 45%;
-      height: 50%;
+      height: 20%;
     }
     
     .image-wrapper img {
