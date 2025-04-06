@@ -84,9 +84,11 @@ div{
     max-width: 80%;
   }
   #page2 #news{
-    width:350px;
+    width:80%;
     height: 50%;
     margin: auto;
+    border: 0;
+    padding: 0;
   }
 div{
     font-size: smaller;
@@ -236,9 +238,9 @@ color: green;
 
 
 #news { width: 1000px; margin: auto; padding: 20px; font-family: Arial;}
-      .article { border-bottom: 1px solid #ddd; padding: 10px 0; }
-      .article h3 { margin: 0; font-style: italic;}
-      .article a { text-decoration: none; color: blue; }
+      .article { border-bottom: 1px solid #ddd; padding: 10px 0; width: 100%;}
+      .article h3 { margin: 0; font-style: italic; width: 100%;}
+      .article a { text-decoration: none; color: blue;  width: 100%;}
 
 
 .darkshadow{
